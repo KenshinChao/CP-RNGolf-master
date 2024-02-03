@@ -55,12 +55,22 @@ class Play extends Phaser.Scene {
         // add pointer input
         this.input.on('pointerdown', (pointer) => { //? means it will return a true or false. and then the first argument is what it will return when its true.
             let shotDirection = pointer.y < this.ball.y ? 1 : -1
-            let shotDirectionX = pointer.x < this.ball.y ? 1 : -1
-            if (shotDirectionX == 1){
-                this.ball.body.setVelocityX(Phaser.Math.Between(0,this.SHOT_VELOCITY_X,))
+            let shotDirectionX = pointer.x < this.ball. x? 1 : -1
+            if (shotDirection == 1){
+                if (shotDirectionX == 1){
+                    this.ball.body.setVelocityX(Phaser.Math.Between(-this.SHOT_VELOCITY_X,0))
+                }
+                else{
+                this.ball.body.setVelocityX(Phaser.Math.Between(-this.SHOT_VELOCITY_X,0))
+                }
             }
-            else{
-            this.ball.body.setVelocityX(Phaser.Math.Between(-this.SHOT_VELOCITY_X,0))
+            else if (shotDirection == -1){
+                if (shotDirectionX == 1){
+                    this.ball.body.setVelocityX(Phaser.Math.Between(0, this.SHOT_VELOCITY_X))
+                }
+                else{
+                this.ball.body.setVelocityX(Phaser.Math.Between(-this.SHOT_VELOCITY_X,0))
+                }
             }
             this.ball.body.setVelocityY(Phaser.Math.Between(this.SHOT_VELOCITY_Y_MIN, this.SHOT_VELOCITY_Y_MAX) * shotDirection)
         })
